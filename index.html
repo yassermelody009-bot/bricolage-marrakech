@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خبراء الإصلاح — مراكش</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --clay: #C4622D;
+    --clay-light: #E8956D;
+    --clay-dark: #8B3E18;
+    --navy: #1A2744;
+    --navy-mid: #243461;
+    --gold: #D4A843;
+    --gold-light: #F0C96A;
+    --cream: #FBF5EC;
+    --warm-white: #FEFCF8;
+    --text-dark: #1A1410;
+    --text-muted: #6B5A4E;
+    --border: rgba(196, 98, 45, 0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ═══ PATTERN OVERLAY ═══ */
+  .pattern-bg {
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(196,98,45,0.03) 20px, rgba(196,98,45,0.03) 21px),
+      repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(212,168,67,0.03) 20px, rgba(212,168,67,0.03) 21px);
+  }
+
+  /* ═══ NAV ═══ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,39,68,0.97);
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  .logo span { color: var(--clay-light); }
+
+  nav a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    margin-right: 1.5rem;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--clay);
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--clay-dark) !important; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 2rem 4rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(196,98,45,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(212,168,67,0.15) 0%, transparent 50%);
+  }
+
+  /* Geometric Moroccan motif */
+  .hero-motif {
+    position: absolute;
+    left: -100px; top: 50%;
+    transform: translateY(-50%);
+    width: 600px; height: 600px;
+    opacity: 0.06;
+    background-image: repeating-conic-gradient(var(--gold) 0% 25%, transparent 0% 50%);
+    background-size: 80px 80px;
+    border-radius: 50%;
+  }
+
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(212,168,67,0.15);
+    border: 1px solid rgba(212,168,67,0.4);
+    color: var(--gold-light);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2px;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--clay);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  .btn-primary:hover { background: var(--clay-dark); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s, color 0.2s;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Stats bar */
+  .stats-bar {
+    background: var(--clay);
+    padding: 1.2rem 2rem;
+    display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+  }
+
+  .stat { text-align: center; color: white; }
+  .stat strong { display: block; font-size: 1.8rem; font-weight: 700; line-height: 1; font-family: 'Playfair Display', serif; }
+  .stat span { font-size: 0.85rem; opacity: 0.85; }
+
+  /* ═══ SERVICES ═══ */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+
+  .section-label {
+    display: inline-block;
+    color: var(--clay);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .section-title em { font-style: normal; color: var(--clay); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--clay);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: right;
+  }
+
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,39,68,0.1); border-color: rgba(196,98,45,0.3); }
+  .service-card:hover::before { transform: scaleX(1); transform-origin: left; }
+
+  .service-icon {
+    width: 52px; height: 52px;
+    background: var(--cream);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+  }
+
+  .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+  .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+  .service-price {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--clay);
+  }
+
+  /* ═══ HOW IT WORKS ═══ */
+  .how-section {
+    background: var(--navy);
+    padding: 5rem 2rem;
+  }
+
+  .how-inner { max-width: 900px; margin: 0 auto; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 36px; left: 10%; right: 10%;
+    height: 1px;
+    background: rgba(212,168,67,0.3);
+  }
+
+  .step {
+    text-align: center;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+
+  .step-num {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(212,168,67,0.1);
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+  }
+
+  .step h3 { color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step p { color: rgba(255,255,255,0.55); font-size: 0.88rem; line-height: 1.6; font-weight: 300; }
+
+  /* ═══ FORM ═══ */
+  .form-section {
+    background: var(--cream);
+    padding: 5rem 2rem;
+  }
+
+  .form-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 3rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 40px rgba(26,39,68,0.06);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  input, select, textarea {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #E5DDD6;
+    border-radius: 6px;
+    background: white;
+    color: var(--text-dark);
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--clay);
+    box-shadow: 0 0 0 3px rgba(196,98,45,0.08);
+  }
+
+  textarea { min-height: 110px; resize: vertical; }
+
+  .urgency-options {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .urgency-opt {
+    position: relative;
+  }
+
+  .urgency-opt input[type="radio"] { display: none; }
+
+  .urgency-opt label {
+    display: block;
+    text-align: center;
+    padding: 0.6rem;
+    border: 1.5px solid #E5DDD6;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+
+  .urgency-opt input:checked + label {
+    border-color: var(--clay);
+    background: rgba(196,98,45,0.06);
+    color: var(--clay);
+    font-weight: 700;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--clay);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 1rem;
+  }
+
+  .submit-btn:hover { background: var(--clay-dark); transform: translateY(-1px); }
+  .submit-btn:active { transform: translateY(0); }
+
+  /* WhatsApp float */
+  .wa-float {
+    position: fixed;
+    bottom: 2rem; left: 2rem;
+    width: 58px; height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    z-index: 99;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+
+  .wa-float:hover { transform: scale(1.08); }
+
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* Success msg */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    color: var(--navy);
+  }
+  .success-msg .check { font-size: 3rem; margin-bottom: 1rem; }
+  .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .success-msg p { color: var(--text-muted); }
+
+  /* Footer */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+  }
+  footer strong { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    .steps::before { display: none; }
+    .steps { gap: 2rem; }
+    nav .nav-links { display: none; }
+    .form-wrapper { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body class="pattern-bg">
+
+<!-- NAV -->
+<nav>
+  <div class="logo">خبراء <span>الإصلاح</span></div>
+  <div class="nav-links">
+    <a href="#services">خدماتنا</a>
+    <a href="#how">كيف نعمل</a>
+    <a href="#request" class="nav-cta">طلب عاجل</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-motif"></div>
+  <div class="hero-content">
+    <div class="hero-badge">مراكش · خدمة محلية موثوقة</div>
+    <h1>أصلح بيتك مع<br><em>محترفين موثوقين</em></h1>
+    <p>نربطك مع أحسن الصناع والتقنيين في مراكش — بسرعة، بأسعار واضحة، وبضمان الجودة.</p>
+    <div class="hero-btns">
+      <a href="#request" class="btn-primary">🔧 اطلب الخدمة دابا</a>
+      <a href="#services" class="btn-secondary">شوف الخدمات</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><strong>+200</strong><span>عميل راضي</span></div>
+  <div class="stat"><strong>24h</strong><span>استجابة سريعة</span></div>
+  <div class="stat"><strong>100%</strong><span>ضمان الجودة</span></div>
+  <div class="stat"><strong>0 درهم</strong><span>تقديم المشروع</span></div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-label">ما نقدمو</div>
+      <h2 class="section-title">خدمات البيت <em>الكاملة</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔌</div>
+        <h3>الكهرباء</h3>
+        <p>تركيب وإصلاح كل المشاكل الكهربائية — إيار، تابلو، بريزة، وأكثر.</p>
+        <div class="service-price">من 100 درهم</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚿</div>
+        <h3>السباكة</h3>
+        <p>تصليح التسربات، تبديل الصنابير، فك الانسدادات بسرعة.</p>
+        <div class="service-price">من 80 درهم</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚪</div>
+        <h3>النجارة</h3>
+        <p>إصلاح الأبواب، الشبابيك، الأرفف وكل خدمات الخشب.</p>
+        <div class="service-price">من 120 درهم</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🖌️</div>
+        <h3>الدهن والطلاء</h3>
+        <p>طلاء الجدران والأسقف بمواد عالية الجودة وألوان تختارها.</p>
+        <div class="service-price">من 15 درهم/م²</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">❄️</div>
+        <h3>المكيفات</h3>
+        <p>تركيب، تنظيف وإصلاح جميع أنواع مكيفات الهواء.</p>
+        <div class="service-price">من 150 درهم</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔩</div>
+        <h3>البريكولاج العام</h3>
+        <p>تركيب الأثاث، تعليق الصور، أعمال صغيرة متنوعة.</p>
+        <div class="service-price">من 60 درهم</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how" class="how-section">
+  <div class="how-inner">
+    <div class="section-header">
+      <div class="section-label" style="color: var(--gold-light);">كيف يشتغل</div>
+      <h2 class="section-title" style="color: white;">بسيط ك <em style="color: var(--gold)">1-2-3</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">١</div>
+        <h3>صف المشكل</h3>
+        <p>عبّر عن الخدمة لي محتاجها عبر الفورم أو الواتساب</p>
+      </div>
+      <div class="step">
+        <div class="step-num">٢</div>
+        <h3>نرسل ليك صانع</h3>
+        <p>نختار أحسن تقني ونحدد معك الموعد لي يناسبك</p>
+      </div>
+      <div class="step">
+        <div class="step-num">٣</div>
+        <h3>شغل محلول</h3>
+        <p>الصانع جي، خدم، وكدا خلص — مع ضمان على الشغل</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div id="request" class="form-section">
+  <div style="max-width:720px; margin: 0 auto 2rem; text-align:center;">
+    <div class="section-label">ابعث الطلب</div>
+    <h2 class="section-title">طلب <em>خدمة</em> الآن</h2>
+    <p style="color: var(--text-muted); margin-top: 0.8rem;">جاوبنا على أسئلة بسيطة وغادي نتواصلو معك في أقرب وقت</p>
+  </div>
+
+  <div class="form-wrapper">
+    <form id="requestForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">الاسم الكامل *</label>
+          <input type="text" id="name" placeholder="مثال: محمد أمين" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">رقم الهاتف *</label>
+          <input type="tel" id="phone" placeholder="06 XX XX XX XX" required>
+        </div>
+        <div class="form-group">
+          <label for="service">نوع الخدمة *</label>
+          <select id="service" required>
+            <option value="" disabled selected>اختر الخدمة</option>
+            <option>🔌 كهرباء</option>
+            <option>🚿 سباكة</option>
+            <option>🚪 نجارة</option>
+            <option>🖌️ دهن وطلاء</option>
+            <option>❄️ مكيف</option>
+            <option>🔩 بريكولاج عام</option>
+            <option>📦 خدمة أخرى</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quartier">الحي / المنطقة *</label>
+          <input type="text" id="quartier" placeholder="مثال: كيلوميتر 5، جليز..." required>
+        </div>
+        <div class="form-group full">
+          <label for="description">وصف المشكل</label>
+          <textarea id="description" placeholder="صف المشكلة بإيجاز... مثلاً: كاين تقطير فالسقف..."></textarea>
+        </div>
+        <div class="form-group full">
+          <label>الاستعجال</label>
+          <div class="urgency-options">
+            <div class="urgency-opt">
+              <input type="radio" name="urgency" id="u1" value="عاجل جداً — اليوم" checked>
+              <label for="u1">🔴 عاجل — اليوم</label>
+            </div>
+            <div class="urgency-opt">
+              <input type="radio" name="urgency" id="u2" value="هاد الأسبوع">
+              <label for="u2">🟡 هاد الأسبوع</label>
+            </div>
+            <div class="urgency-opt">
+              <input type="radio" name="urgency" id="u3" value="مرن — أي وقت">
+              <label for="u3">🟢 مرن — أي وقت</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">📤 إرسال الطلب عبر واتساب</button>
+    </form>
+    <div class="success-msg" id="successMsg">
+      <div class="check">✅</div>
+      <h3>شكراً! وصلنا طلبك</h3>
+      <p>غادي نتواصلو معك في أقل من ساعة لتأكيد الموعد.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 خبراء الإصلاح · مراكش | كل الحقوق محفوظة</p>
+  <p style="margin-top: 0.4rem;">مصنوع بـ ❤️ لخدمة <strong>مراكش</strong></p>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/212600000000?text=السلام عليكم، بغيت نطلب خدمة" class="wa-float" target="_blank" title="واتساب">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // ════ رقم الواتساب ديالك — بدل 212600000000 برقمك ════
+  const WHATSAPP_NUMBER = "212600000000";
+
+  document.getElementById('requestForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const quartier = document.getElementById('quartier').value;
+    const description = document.getElementById('description').value;
+    const urgency = document.querySelector('input[name="urgency"]:checked').value;
+
+    const msg = `🔧 *طلب خدمة جديد*\n\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n🛠️ الخدمة: ${service}\n📍 الحي: ${quartier}\n⏱️ الاستعجال: ${urgency}\n📝 الوصف: ${description || 'لا يوجد'}`;
+
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank');
+
+    document.getElementById('requestForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  });
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
